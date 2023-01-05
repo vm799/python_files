@@ -1,0 +1,76 @@
+ 
+                               
+
+                  _________________________USER OVERVIEW _____________________________
+                                 
+                  Number of total number users registered: 4   
+                  
+                  Number of total number tasks generated: 9  
+        
+          
+                  ________________________________________________________________
+        
+                  The registered user called: admin has 2 tasks assigned to them.
+        
+                  admin has been assigned 22% of the total number of tasks
+    
+                   
+                  ________________________________________________________________
+        
+                  The registered user called: bob has 3 tasks assigned to them.
+        
+                  bob has been assigned 33% of the total number of tasks
+    
+                   
+                  ________________________________________________________________
+        
+                  The registered user called: carl has 4 tasks assigned to them.
+        
+                  carl has been assigned 44% of the total number of tasks
+    
+                 
+                                         
+                                         
+                                         
+                  _________________________________USER NAME: admin___________________________________________________
+                  
+                  For user admin there are 2 task(s) COMPLETED
+                  this represents 100 % of all the tasks assigned to this user. 
+                
+                  There are also 0 task(s) DUE SOON
+                  this represents 0 % of all the tasks assigned to this user. 
+             
+                  And finally 0 task(s) OVERDUE
+                  this represents 0 % of all the tasks assigned to this user. 
+                  
+                    
+                                         
+                                         
+                                         
+                  _________________________________USER NAME: bob___________________________________________________
+                  
+                  For user bob there are 0 task(s) COMPLETED
+                  this represents 0 % of all the tasks assigned to this user. 
+                
+                  There are also 1 task(s) DUE SOON
+                  this represents 33 % of all the tasks assigned to this user. 
+             
+                  And finally 2 task(s) OVERDUE
+                  this represents 67 % of all the tasks assigned to this user. 
+                  
+                    
+                                         
+                                         
+                                         
+                  _________________________________USER NAME: carl___________________________________________________
+                  
+                  For user carl there are 1 task(s) COMPLETED
+                  this represents 25 % of all the tasks assigned to this user. 
+                
+                  There are also 0 task(s) DUE SOON
+                  this represents 0 % of all the tasks assigned to this user. 
+             
+                  And finally 3 task(s) OVERDUE
+                  this represents 75 % of all the tasks assigned to this user. 
+                  
+                    

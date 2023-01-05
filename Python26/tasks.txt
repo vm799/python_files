@@ -1,0 +1,8 @@
+admin, 1Register Users with taskManager.py, Use taskManager.py to add the usernames and passwords for all team members that will be using this program., 12/12/20, 2019-25-10, Yes
+bob, 2Register Users with taskManager.py, Use taskManager.py to add the usernames and passwords for all team members that will be using this program., 23/11/22, 2019-25-10, No
+bob, 4Register Users with taskManager.py, Use taskManager.py to add the usernames and passwords for all team members that will be using this program., 12/12/23, 2019-25-10, No
+admin, 5Register Users with taskManager.py, Use taskManager.py to add the usernames and passwords for all team members that will be using this program., 12/12/24, 2019-25-10, Yes
+bob, 6Register Users with taskManager.py, Use taskManager.py to add the usernames and passwords for all team members that will be using this program., 12/12/21, 2019-25-10, No
+carl, 6Register Users with taskManager.py, Use taskManager.py to add the usernames and passwords for all team members that will be using this program., 12/12/21, 2022-25-10, Yes
+carl, 6Register Users with taskManager.py, Use taskManager.py to add the usernames and passwords for all team members that will be using this program., 12/12/21, 2023-25-10, No
+carl, 8Register Users with taskManager.py, Use taskManager.py to add the usernames and passwords for all team members that will be using this program., 10/12/21, 2018-25-10, No
