@@ -7,37 +7,37 @@ from statistics import mean
 def find_minimum_number(int_list):
     min_value = min(int_list) #using the min() function to return lowest value
     
-    with open("output.txt", "w") as output_file: #writing to file
+    with open("output.txt", "w", encoding="utf-8-sig") as output_file: #writing to file
         output_file.write(f"The min of {int_list} is {min_value}\n")
         
 def find_maximum_number(int_list):
     max_value = max(int_list)     
     
-    with open("output.txt", "a") as output_file:
+    with open("output.txt", "a", encoding="utf-8-sig") as output_file:
         output_file.write(f"The max of {int_list} is {max_value}\n")
         
 def find_average_number(int_list):
     avg_value = round(mean(int_list),2)  #round the result to 2dp
     
-    with open("output.txt", "a") as output_file:
+    with open("output.txt", "a", encoding="utf-8-sig") as output_file:
         output_file.write(f"The avg of {int_list} is {avg_value}\n")
 
-with open("input.txt", "r") as input_file:
+with open("input.txt", "r", encoding="utf-8-sig") as input_file:
     single_line_input = input_file.readlines()  # read file and return list of the lines in file
     
     for line in single_line_input: # iterate through the list
         single_line_nums = (line[4:]) # removing the letters and symbols i.e "min:" to then work with the numbers and maths functions
         print(single_line_nums)
-        
+
         single_line_numlist = single_line_nums.split(",")
         print(single_line_numlist)
-        
+
         int_list = ([(int(x)) for x in single_line_numlist]) # return a list of the individual numbers and caste them to integers
         print(int_list)
         
         if "max" in line: #if the keyword max,min,avg found in the original line output of readlines() then the relevant function can be actioned
-           max_line = find_maximum_number(int_list)
-           
+            max_line = find_maximum_number(int_list)
+
         if "min" in line:
             min_line = find_minimum_number(int_list)
             

@@ -15,10 +15,10 @@ def replace_every_second_word():
 
     Please type in a sentence of your choice: """)
     new_sent= sentence.split() #create an iterable list from string
-   
+
     for word in new_sent:
         if i%2==1:  # as index starts at 0, every second word will be odd
-           replaced_sent += "hello " 
+            replaced_sent += "hello " 
         else:
             replaced_sent += word + " "
         i += 1

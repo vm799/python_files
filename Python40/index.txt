@@ -8,6 +8,10 @@ However I have created a basic HTML page as requested in the task below.
 Thank you
 -->
 
+
+<!-- I'm not sure how to upload just the code, th index.html file shows the rendered page not the code, so I created this file
+as a txt file -->
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
