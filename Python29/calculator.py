@@ -17,13 +17,12 @@ def multiply(num1, num2):
 def add(num1, num2):
     return (f"{num1 + num2}")
 
-#to account for user entering 0 and resulting in an ZeroDivisionError
 def divide(num1, num2):
     return (f"{round((num1 / num2), 2)}")
 
 #initial user menu
 print(""""
-          
+
         Please type which option you would like:
         _________________________________________________________________________
         
@@ -41,6 +40,8 @@ while True:
         Enter your menu option please (1 or 2): """)
     
     if menu_option == "1":
+        
+        #try/except block to loop the user back to the start if non-integer input
         try:
             input_num_1 = int(input("""
         Please type in a whole number: """))
@@ -58,6 +59,7 @@ while True:
         *** Sorry that wasn't a number, please try again. Menu options again:  """)    
             continue
         
+        # defensive loop to catch errors in input of operation
         if operation in ("*","-","/","+"):
             
                 if operation == "+":
@@ -68,15 +70,17 @@ while True:
                     
                 elif operation == "/":
                     
+                    #to account for user entering 0 and division function: resulting in an ZeroDivisionError
                     if input_num_2 == 0:   
                         while True: 
                             input_num_2 = int(input("""
         *** Sorry! We can't divide by 0, please could you type in a number bigger than 0:  """))
                             if input_num_2 !=0:
                                 break
+                            
                     if input_num_2 != 0:       
                                 equation = (f"{input_num_1} / {input_num_2} = {divide(input_num_1, input_num_2)}")
-                        
+                                                        
                 elif operation == "-":
                     equation = (f"{input_num_1} - {input_num_2} = {subtract(input_num_1, input_num_2)}")
             
@@ -84,8 +88,9 @@ while True:
         Thank you, this equation: {equation} has been written to the text file. 
         
         Here is your menu again:  """)
-            
-                with open("Python29/equations.txt", "a", encoding="utf_8_sig") as user_equation_log:   
+
+                #write equations to the file
+                with open("equations.txt", "a", encoding="utf_8_sig") as user_equation_log:   
                     user_equation_log.writelines(equation + "\n")
                     continue
         else:
@@ -93,19 +98,21 @@ while True:
         *** Uh Oh! That was not a valid operation. Menu options again:""")
             continue
     
+    #option to review equations written to file
     if menu_option == "2":
         while True:       
             file_name = input("""
         Please type in the name of the file you would like to review, in the form (e.g equations):  """)
         
-            
+            #try/except block to catch errors of incorrect file or spelling
             try:
-                    with open(f"Python29/{file_name}.txt", "r", encoding="utf_8_sig") as file_request:   
+                    with open(f"{file_name}.txt", "r", encoding="utf_8_sig") as file_request:   
                         file_equations = file_request.read() 
                         print(f""" 
 Here are the equations from the file you requested:  
 
 {file_equations}""")
+                    break
                     
             except FileNotFoundError:
                     print("""
