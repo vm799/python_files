@@ -204,8 +204,7 @@ def search_shoe():
     else:
         print("""
               
-        -**************Sorry not found
-        !-***********-
+        -**************Sorry not found!-***********-
         
         Back to the Main Menu:  
         
