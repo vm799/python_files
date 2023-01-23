@@ -1,15 +1,15 @@
 
+                
     _________________________TASK OVERVIEW _____________________________
                                  
-    Number of total tasks generated: 5                            
-    Number of completed jobs:  2  
-    Number of incomplete and overdue jobs: 2       
+    Number of total tasks generated: 8                            
+    Number of completed jobs:  3
+    Number of incomplete jobs:  5    
+    Number of incomplete and overdue jobs: 3       
     Number of incomplete jobs due soon:  1
-    ____________________________________________________________________
-
-    80.0% of the total tasks are incomplete
-    40.0% of the total tasks are overdue
     
+    Percentage of tasks incomplete: 62 % 
+    Percentage of tasks overdue: 38 % 
     ____________________________________________________________________
           
               

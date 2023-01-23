@@ -40,6 +40,7 @@ make_word_groups(['inter', 'twine', 'connected', 'dependent'])
 def remove_suffix_ness(word):
     new_word_without_suffix = word.replace("ness", "")
     
+    #if end of word is "i"
     if new_word_without_suffix[len(new_word_without_suffix)-1] == "i":
         print(new_word_without_suffix.replace("i","y"))
     else:

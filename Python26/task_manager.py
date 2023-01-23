@@ -56,7 +56,7 @@ def reg_user(users):
             
             #if both passwords match, the new username and password added to file
             if password == password1:  
-                with open("user.txt", "a") as all_users_file:
+                with open("Python26/user.txt", "a") as all_users_file:
                     all_users_file.write(new_username + ", " + password + "\n")
                 
                 print(f"""
@@ -90,11 +90,11 @@ def add_task():
         
               """)
     # write new task to file separated by commas to make creation of list easier   
-    with open("tasks.txt", "a") as task_file: 
+    with open("Python26/tasks.txt", "a") as task_file: 
         task_file.write(user_name + ", " + task_title + ", " + task_description + ", " + task_due_date + ", " + task_assigned + ", " + task_completed + "\n")
      
 def view_all():
-    with open("tasks.txt", "r") as  task_file:
+    with open("Python26/tasks.txt", "r") as  task_file:
         for line in task_file.readlines():  
             tasks = line.split(",") 
             print(f"""
@@ -114,7 +114,7 @@ Task description:
                         """)
             
 def view_mine():
-    with open("tasks.txt", "r") as task_file:
+    with open("Python26/tasks.txt", "r") as task_file:
         data = task_file.readlines()
         
         # assign a counter/number called 'index' to each line and start at 1 not 0, split to return a list and find first item in list
@@ -179,7 +179,7 @@ You now have 2 options:
                     print(f"""
 Thank you, you have now changed Task {user_task_choice +1} to: Completed.
         """) 
-                with open("tasks.txt", "w") as tasks_amend:
+                with open("Python26/tasks.txt", "w") as tasks_amend:
                     for line in data:
                         tasks_amend.writelines(line)
 
@@ -209,7 +209,7 @@ Here are your options:
                         print(f"""
     Thank you, you have now changed the name assigned on Task {user_task_choice + 1} to {new_name}.
         """)
-                        with open("tasks.txt", "w") as tasks_amend:
+                        with open("Python26/tasks.txt", "w") as tasks_amend:
                             for line in data:
                                 print(line)                    
                                 tasks_amend.writelines(line)     
@@ -226,7 +226,7 @@ Here are your options:
                         print(f"""
     Thank you, you have now changed the due date of Task {user_task_choice + 1} to {new_task_date}.
         """)
-                        with open("tasks.txt", "w") as tasks_amend:
+                        with open("Python26/tasks.txt", "w") as tasks_amend:
                             for line in data:
                                 tasks_amend.writelines(line) #write new data to the file
     
@@ -244,7 +244,7 @@ def gen_reports():
         
     ____________________________________________________________________
           """)
-    with open("user.txt", "r") as user_overview, open("tasks.txt", "r") as task_overview:
+    with open("Python26/user.txt", "r") as user_overview, open("Python26/tasks.txt", "r") as task_overview:
      
         tasks = task_overview.readlines()
         
@@ -336,7 +336,7 @@ def gen_reports():
         
         """) 
             
-    with open("user_overview.txt", "a+") as user_overview:
+    with open("Python26/user_overview.txt", "a+") as user_overview:
         for user, due_date in task_due_dates_by_user.items():  #iterating over dictionary
             user_overview.writelines(f"""  
                   ________________________________________________________________
@@ -347,7 +347,7 @@ def gen_reports():
     
                  """)   
        
-    with open("user_overview.txt", "a+") as user_overview: 
+    with open("Python26/user_overview.txt", "a+") as user_overview: 
         for i in task_if_due_and_complete: #iterating over dictionary for each user (i)
             user_overview.writelines(f"""
                                          
@@ -368,10 +368,10 @@ def gen_reports():
 def view_stats():
     
     
-    with open("tasks.txt", "r") as task_file:
+    with open("Python26/tasks.txt", "r") as task_file:
         task_count = len(task_file.readlines())
             
-    with open("user.txt", "r") as  user_file:
+    with open("Python26/user.txt", "r") as  user_file:
         user_count = len(user_file.readlines())
            
     print(f"""
@@ -387,10 +387,10 @@ ____________________________________________________
     gen_reports()
     
     #printing out stats from 2 files generated
-    with open("user_overview.txt", "r") as  user_overview:
+    with open("Python26/user_overview.txt", "r") as  user_overview:
         content = user_overview.read()
         print(content)
-    with open("task_overview.txt", "r") as  task_overview:
+    with open("Python26/task_overview.txt", "r") as  task_overview:
         content = task_overview.read()
         print(content)
         
@@ -403,7 +403,7 @@ print("""
 LOGIN HERE:  
       """)
 
-with open("user.txt", "r")  as all_users_file:
+with open("Python26/user.txt", "r")  as all_users_file:
         
     for line in all_users_file:  #read each line of file
         line_without_commas = line.replace(",", " ") #replace commas with space
