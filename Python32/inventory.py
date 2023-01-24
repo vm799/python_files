@@ -3,11 +3,7 @@
 
 #========The beginning of the class==========
 from encodings import utf_8_sig
-import operator
-import sys
 import fileinput
-
-read_shoes_run = False
 
 class Shoe:
     """Stock-taking program to manage stock of various branded running shoes"""
@@ -20,16 +16,16 @@ class Shoe:
         self.product = product
         self.cost = cost
         self.quantity = quantity
-        self.shoe_list = shoe_list.append(self)
-        print("Thank you, new shoe added!")
 
     #returns the cost of the shoes
     def get_cost(self):
-        print(f" The cost of this shoe is {self.cost}")
+        print(f"""
+        The cost of this shoe is {self.cost}""")
     
     #returns the quantity of the shoes
     def get_quantity(self):
-        print(f"The quantity of this shoe is: {self.quantity}")
+        print(f"""
+        The quantity of this shoe is: {self.quantity}""")
 
     #special method to return a string representation of Shoe object
     def __str__(self):
@@ -52,11 +48,7 @@ shoe_list = []
 #duplicating stock in shoe list
 
 def read_shoes_data():
-    global read_shoes_run
-    if read_shoes_run:
-        return
-    read_shoes_run = True
-    
+    #try-catch block for error handling if file not present
     try:
         with open("Python32/inventory.txt", "r") as inventory_file:
             
@@ -65,23 +57,36 @@ def read_shoes_data():
             
             #remove top line
             altered_stockroom_file = (stockroom_file[1:len(stockroom_file)])
-            print(len(shoe_list))
             for individual_shoe_list in altered_stockroom_file:
                 individual_shoe_string = individual_shoe_list.split("'")
-                print(individual_shoe_string)
                 
+                #split at the comma, each individual string in the list of shoe strings
                 for i in individual_shoe_string:
                     list_shoe_strings = i.split(",")
-                
-                    print(list_shoe_strings)         
-                 
+
+                    #create the new Shoe object  and add to the initialised shoe_list
                     shoe_list.append(Shoe(list_shoe_strings[0], list_shoe_strings[1], list_shoe_strings[2], list_shoe_strings[3], list_shoe_strings[4]))
-                    print(len(shoe_list))
+                    print(f"""
+        Shoe no. {len(shoe_list)} added and on the stock list""")
             
     #catch any errors in case file doesn't exist
     except FileNotFoundError:
-        print('File does not exist')
-
+        print("""
+              
+              
+        #====================================================================#
+                
+                ******ERROR! Inventory File does not exist******
+                
+                Please add the inventory file 
+                This is needed for this stock management program to run.
+                
+                Or call 24hr IT helpdesk: 01234 567 890 for advice.
+                
+        #====================================================================#
+        
+        """)
+        
 #function to allow user to add a shoe with their own spec and generate a shoe object
 #and add the new shoe object to the shoe list created above
 def capture_shoes():
@@ -93,13 +98,35 @@ def capture_shoes():
     new_item_country = input("""
         Please type in the country of origin of the shoe:  """)
     new_item_code = input("""
-        Please type in the code of the shoe starting with SKU (e.g SKU123456):  """)
+        Please type in the code of the shoe starting with SKU.
+                Please type uppercase SKU 
+                and then 6 numbers after (e.g SKU123456):  """)
     new_item_product = input("""
-        Please type in the product of the shoe- the name and brand (e.g Air Force 1):  """)
-    new_item_cost = input("""
+        Please type in the name of the shoe product - the name and brand (e.g Air Force 1):  """)
+    
+    #to catch any errors in user typing letters instead of numbers
+    while True:
+        new_item_cost = input("""
         Please type in the cost of the shoe in pence (e.g 2300):  """)
-    new_item_quantity = input("""
+        if new_item_cost.isnumeric():
+            print("""
+        Thankyou for that!""")
+            break
+        elif new_item_cost.isnumeric() != True:
+            print("""
+        Sorry, that didn't seem like a valid numberical input, please try again""")
+
+#to catch any errors in user typing letters instead of numbers
+    while True:    
+        new_item_quantity = input("""
         Please type in the quantity of the shoe stock:  """)
+        if new_item_quantity.isnumeric():
+            print("""
+        Thankyou for that!""")
+            break
+        else:
+            print("""
+        Sorry, that didn't seem like  a valid numberical input, please try again""")
     
     #managing user inputs to create the shoe object with attributes set in the class
     shoe_list.append(Shoe(new_item_country, new_item_code, new_item_product, new_item_cost, new_item_quantity))
@@ -117,26 +144,29 @@ def view_all():
     for item in shoe_list:
         print(item)
 
-#Find shoe of lowest stock and give option to increase stock levels
-#update new quantity on the file
-def re_stock():
-    # while True:       
+# Find shoe of lowest stock and give option to increase stock levels
+# update new quantity on the file
+def re_stock():      
         print("""
-            #==============================================================#
-            This option will allow you to check low stock and top up numbers
-            #==============================================================#
+        #==============================================================#
+        This option will allow you to check low stock and top up numbers
+        #==============================================================#
             """)
         
         quantity_data =[]
+        
+        # to loop through the shoes and add all the quantity data to a list, then find smallest
+        # number, equate this to low_stock variable
         for shoe in shoe_list:
             quantity_data += [shoe.quantity] 
             new_list =[int(item.strip()) for item in quantity_data]
             low_stock = int(min(new_list))
         
+        # match the shoe that has the same stock levels as the low_stock variable
         for shoe in shoe_list:
             if int(shoe.quantity) == low_stock:
                 print(f"""
-            *****-LOW STOCK WARNING-****
+            ===============*****-LOW STOCK WARNING-****=====================
             
             Shoe product called: {shoe.product} is running on low stock volume.  
             Please restock now!
@@ -145,42 +175,49 @@ def re_stock():
                 restock_choice = input("""
             Do you want to add more stock to this product?  """)
                 
+                # while loop to catch  any errors in user input of restock amount
                 if restock_choice in "yes":
                     
-                    restock_amount = int(input("""
-            How much stock would you like to add?:  """))
+                    while True:
+                        restock_amount = input("""
+            How much stock would you like to add?:  """)
+                        if restock_amount.isnumeric():
+                            print("""
+            Thank you for that, we will now update the stocks.""")
+                            break
+                        else:
+                            print("""
+            Oops that didn't seem like a valid numerical input, please try again""")   
+
                     current_stock = int(shoe.quantity)
-                    new_stock = str((current_stock + restock_amount))
+                    new_stock = str((current_stock + int(restock_amount)))
                     print(f"""
             -******************************************************-
             
-            This quantity of this shoe was: {shoe.quantity} 
-            Now updated by: {restock_amount} to {new_stock}
+                The quantity of this shoe {shoe.product} was: {shoe.quantity} 
+                Now updated by: {restock_amount} to {new_stock}
             
             -******************************************************-
             """)
 
-                #add new stock to file with fileinput method
+                # add new stock to file with fileinput method
                     with open("Python32/inventory.txt", "r+") as inventory_file:
                         for l in fileinput.input(files = "Python32/inventory.txt"):
                             l = l.replace(shoe.quantity, (f"{new_stock}\n"))
-                            sys.stdout.write(f"""
-            {l} """)
                             inventory_file.writelines(l)
                         print("""
-            
-            Stock now updated to shoe inventory file
+                              
+        ****--Stock now updated to shoe inventory file--****
             """)
                         break
                     
                 elif restock_choice != "yes" or restock_choice == "no":
                     print("""
-            OK, no problem!
-            
+            OK, no problem, you can always try again if you wish.
             Back to the Main menu here for you: """)
                     break
 
-#enable user to search and output all data for a shoe with the shoe SKU code
+# enable user to search and output all data for a shoe with the shoe SKU code
 def search_shoe():
     print("""
         #=============================================================#
@@ -190,28 +227,25 @@ def search_shoe():
     
     user_shoe_choice = input("""
         Which shoe would you like me to find for you? 
-        Please type in the show code (e.g SKU66734):  """)
+        Please type in the full shoe code including SKU in Uppercase (e.g SKU66734):  
+        
+        (Please note if incorrect code, you will be taken back  to main menu)
+                                    
+                                    :___""")
     
     for shoe in shoe_list:
         if shoe.code == user_shoe_choice:
             print(f"""
         -******************************************************-
         
-        Here's your shoe!:  {shoe}
+        Here's your shoe!:  
+        {shoe}
         
         -******************************************************-
         """) 
-    else:
-        print("""
-              
-        -**************Sorry not found!-***********-
-        
-        Back to the Main Menu:  
-        
-        """)
 
-#Allow user to find the value of each stock of a particular shoe
-#diving by 100 to give result in £
+# Allow user to find the TOTAL value of each stock of a particular shoe
+# dividing by 100 to give result in £
 def value_per_item():
     print("""
         Individual shoe stock values are being calculated.""")
@@ -226,8 +260,8 @@ def value_per_item():
     -**************************************************-
     """)
 
-#Allow the user to search the shoe list and find shoe that has highest stock 
-#and put it it on sale
+# Allow the user to search the shoe list and find shoe that has highest stock 
+# and put it it on sale
 def highest_qty():
     print("""
         #===============================================================#
@@ -237,27 +271,31 @@ def highest_qty():
     
     quantity_data =[]
     
-    #find the quantity attribute for each shoe, add to list and find max value
+    # find the quantity attribute for each shoe, add to list and find max value
     for shoe in shoe_list:
         quantity_data += [shoe.quantity] 
         new_list =[int(item.strip()) for item in quantity_data]
         highest_stock = int(max(new_list))
 
-    #with knowledge of max value, search for shoe with this attribute and output the shoe
-    #to put on sale
+    # with knowledge of max value, search for shoe with this attribute and output the shoe
+    # to put on sale
     for shoe in shoe_list:    
         if int(shoe.quantity) == highest_stock:
             print(shoe)
             print(f"""
-    -******************************************************-
+        -******************************************************-
     
-    This shoe: {shoe.product} has the highest stock at {shoe.quantity}
-    This shoe is now on sale.
+        This shoe: {shoe.product} has the highest stock at {shoe.quantity}
+        
+                ******This shoe is now on SALE ******
     
-    -******************************************************-
-    """)
+        -******************************************************-
+        """)
 
 # #==========Main Menu=============
+
+# start program by adding shoes to list from external txt file
+read_shoes_data()
 
 while True:
     user_choice = input(f"""
@@ -265,7 +303,9 @@ while True:
          Hello there, welcome to the SuperShoes stockroom.
         #=================================================#
         
-        Here are your options today: 
+        Here are your options today.
+        
+        Please type in the number of the option you would like: 
         
         1. Add a shoe product to stock
         
@@ -278,11 +318,15 @@ while True:
         5. Check shoe stock value 
         
         6. Put shoe on sale
-                            :_""")
+                            (please type 1,2,3,4,5 or 6):__""")
     
     if user_choice in ('1','2','3','4','5','6',123456):
+        
         #allow function to generate data from inventory file ready for managing through menu below
-        read_shoes_data()
+        print(f"""
+        Thank you, you chose option: {user_choice}, 
+        just processing stock data now...
+    """)
 
     if user_choice == '1':
         capture_shoes()
