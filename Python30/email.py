@@ -7,7 +7,6 @@ from unicodedata import name
 class Email:
     """ Email inbox handling with filter for spam""" 
     
-
     #constructor method with 4 data attributes 
     def __init__(self, email_contents, from_address, has_been_read = False, is_spam = False):
         self.email_contents = email_contents
@@ -17,7 +16,15 @@ class Email:
     
     #string representation of object
     def __str__(self):
-        return f'This email contains {self.email_contents}, has {"not been read" if self.has_been_read == False else "been read"} and is from {self.from_address} and {"not spam" if self.is_spam == False else "is spam!"}'
+        return f"""
+    
+        #---------------------Email-----------------------------#
+        
+        Email contents:  {self.email_contents}.
+        Email has {"not been read" if self.has_been_read == False else "been read"}.
+        This email is from {self.from_address} and {"is not spam." if self.is_spam == False else "is spam!"}
+        
+        """
     
     #class method getter to access 'has_been_read' attribute
     def get_has_been_read(self):
@@ -30,11 +37,13 @@ class Email:
     def get_is_spam(self):
         return self.is_spam
         
-    
     #method to mark email read with self passed as argument   
     def mark_as_read(self):
         self.has_been_read = True
-        print(f"This email is now marked as read!")
+        print(f"""      
+        #--------|  This email is now marked as read  |---------#
+         
+        """)
         
     #method to mark email as spam with self passed as argument   
     def mark_as_spam(self):
@@ -46,28 +55,37 @@ inbox = []
 
 #functions to manage the email inbox
 def add_email():
-    email_contents = input("What is the email about?  ")
-    from_address = input("Who is the email from?  ")
+    email_contents = input("""
+    What is the email about?  """)
+    from_address = input("""
+    Who is the email from?  """)
     has_been_read = False
     is_spam = False
     inbox.append(Email(email_contents, from_address, has_been_read, is_spam))
-    print(f"Thankyou, your email from {from_address} about {email_contents} has been sent and stored.")
+    print(f"""
+    Thankyou, your email from {from_address},
+    about {email_contents} has been sent and stored.""")
     
 
 def get_count():
-    print(f"You have {len(inbox)+1} emails")
+    print(f"""
+          
+        You have {len(inbox)} emails in your inbox
+        
+        """)
 
 def get_email():
     for index, email in enumerate(inbox, 1):
-        print(f"Option {index}: {email.email_contents}")
+        print(f"""
+        {index}: {email.email_contents}""")
         
         #error handling in case of a number out of range of the length of the list of emails
     while True:
             user_input = input("""
-                    Enter the number of the email you want to read: 
-                    (Type 'quit' to go back to main menu) 
-                    """)
-            if user_input != "quit":
+        Enter the number of the email you want to read e.g 1
+        (Type 'quit' to go back to main menu) :__ """)
+            
+            if user_input != "quit" and user_input.isnumeric():
                 choice = int(user_input) -1 
             
                 if choice in range(0, len(inbox)):
@@ -80,7 +98,9 @@ def get_email():
                 break
             
             else:
-                print("Uh oh! Please try again and enter a valid number from the options")
+                print("""
+        Uh oh! 
+        Please try again and enter a valid number from the options""")
         
 
 #function to return a list of emails not yet read
@@ -99,8 +119,20 @@ def get_spam_emails(my_inbox):
     for i in my_inbox:
         if i.get_is_spam():
             spam_inbox.append(i)
-            print(f"The emails from {i.from_address} is spam, it's about {i.email_contents}")
+            print(f"""                  
+        The email from {i.from_address} is spam
+
+        """)
     delete()
+    
+    if len(spam_inbox) == 0:
+        print(f"""
+                  
+        There are no spam emails left.
+        You have a nice clean inbox!
+        
+        """)
+        
     return spam_inbox
    
 
@@ -109,7 +141,9 @@ def delete():
     for i in inbox:
         if i.get_is_spam():
             inbox.remove(i)
-            print(f"This email has now been deleted")
+            print(f"""
+        This email has now been deleted
+        """)
 
 
 
@@ -125,7 +159,21 @@ inbox.append(Email("buythemoon", "jim@james.com", False, True))
 user_choice = ""
 
 while user_choice != "quit":
-    user_choice = input("What would you like to do - read all/get unread/mark spam/send/get number/quit?:  ")
+    user_choice = input("""
+        #------------------EMAIL MANAGEMENT--------------#               
+        
+        Welcome.
+        
+        What would you like to do today? 
+        
+        --read all
+        --get unread
+        --mark spam
+        --send
+        --get number
+        --quit 
+            
+        (please type in the option as it is seen here e.g read all) :   """)
     
     if user_choice == "read all":  
         get_email()
@@ -144,10 +192,18 @@ while user_choice != "quit":
     
     
     elif user_choice == "quit":
-        print("Goodbye")
+        print("""
+              
+        Goodbye, see you again soon!
+        
+        """)
     
     else:
-        print("Oops - incorrect input, please try again!")
+        print("""
+        Oops - that's not a valid option. 
+        Please try again!
+        Here is the original menu again:
+        """)
         
 
 #https://realpython.com/python3-object-oriented-programming/

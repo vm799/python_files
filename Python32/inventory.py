@@ -50,7 +50,7 @@ shoe_list = []
 def read_shoes_data():
     #try-catch block for error handling if file not present
     try:
-        with open("Python32/inventory.txt", "r") as inventory_file:
+        with open("inventory.txt", "r") as inventory_file:
             
             #return a list of data from file
             stockroom_file = inventory_file.readlines()
@@ -67,7 +67,9 @@ def read_shoes_data():
                     #create the new Shoe object  and add to the initialised shoe_list
                     shoe_list.append(Shoe(list_shoe_strings[0], list_shoe_strings[1], list_shoe_strings[2], list_shoe_strings[3], list_shoe_strings[4]))
                     print(f"""
-        Shoe no. {len(shoe_list)} added and on the stock list""")
+        Shoe no. {len(shoe_list)} added and on the stock list
+        
+        """)
             
     #catch any errors in case file doesn't exist
     except FileNotFoundError:
@@ -201,8 +203,8 @@ def re_stock():
             """)
 
                 # add new stock to file with fileinput method
-                    with open("Python32/inventory.txt", "r+") as inventory_file:
-                        for l in fileinput.input(files = "Python32/inventory.txt"):
+                    with open("inventory.txt", "r+") as inventory_file:
+                        for l in fileinput.input(files = "inventory.txt"):
                             l = l.replace(shoe.quantity, (f"{new_stock}\n"))
                             inventory_file.writelines(l)
                         print("""
@@ -303,9 +305,9 @@ while True:
          Hello there, welcome to the SuperShoes stockroom.
         #=================================================#
         
-        Here are your options today.
+        --Here are your options today.
         
-        Please type in the number of the option you would like: 
+        --Please type in the number of the option you would like: 
         
         1. Add a shoe product to stock
         
