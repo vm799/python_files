@@ -54,6 +54,7 @@ class Email:
 inbox = []
 
 #functions to manage the email inbox
+# takes user inputs to create an Email object and adds to initialised list
 def add_email():
     email_contents = input("""
     What is the email about?  """)
@@ -85,6 +86,7 @@ def get_email():
         Enter the number of the email you want to read e.g 1
         (Type 'quit' to go back to main menu) :__ """)
             
+            #error handling if user enters a letter 
             if user_input != "quit" and user_input.isnumeric():
                 choice = int(user_input) -1 
             
@@ -104,6 +106,7 @@ def get_email():
         
 
 #function to return a list of emails not yet read
+#loop through inbox and check for emails not maked as read print emails and return a list
 def get_unread_emails(my_inbox):
     unread_inbox=[]
     for i in my_inbox:
@@ -125,11 +128,14 @@ def get_spam_emails(my_inbox):
         """)
     delete()
     
+    # to manage the  case where all emails have been marked as spam and deleted
     if len(spam_inbox) == 0:
         print(f"""
                   
+        WOW! 
         There are no spam emails left.
         You have a nice clean inbox!
+        Great job and enjoy your day.
         
         """)
         
@@ -213,4 +219,3 @@ while user_choice != "quit":
 #https://realpython.com/python-class-constructor/#:~:text=__new__()%20%2C%20you%20call,use%20the%20super()%20function.
 #https://data-flair.training/blogs/python-object/
 #https://stackoverflow.com/questions/17534345/typeerror-missing-1-required-positional-argument-self
-#

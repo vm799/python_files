@@ -1,5 +1,5 @@
-
-class Car(object):
+#
+class Car:
     
     def __init__(self, year, mpg, speed):
         self.year= year

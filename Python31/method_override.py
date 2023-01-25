@@ -2,8 +2,7 @@
 # create an adult class with attributes from user inputs
 # create a method can_drive() that prints name and old enough to drive
 
-
-
+#user inputs
 name = input("""
             Please type in your name:  """)
 age = int(input("""
@@ -16,12 +15,14 @@ eye_colour = input("""
 
 class Adult:
     
-    def __init__(self):
+    #constructor of class object Adult with 4 attributes
+    def __init__(self, name, age, hair_colour, eye_colour):
         self.name = name
         self.age = age
         self.hair_colour = hair_colour
         self.eye_colour = eye_colour
-        
+    
+    # method of class object Adult   
     def can_drive(self):
         print(f"""
     _______________________________________________________________________
@@ -30,8 +31,10 @@ class Adult:
     _______________________________________________________________________
 """)
         
-
+# subclass of Adult class with same attributes
 class Child(Adult):
+    
+    #subclass method to override the Adult method if user too young
     def can_drive(self):
         print(f"""
     _______________________________________________________________________
@@ -40,7 +43,7 @@ class Child(Adult):
     _______________________________________________________________________
 """) 
     
-
+# function to determine age of user and call relevant class or subclass therefore if can drive
 def determine_object_class():
     if age >= 18:
         person = Adult()
