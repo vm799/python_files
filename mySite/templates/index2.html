@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>VM Portfolio</title>
+        
+        <!-- to link the css file to html -->
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}"/>
+
+        <style> @import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400&family=DM+Sans:ital,wght@0,400;0,500;1,700&family=Lora:wght@400;500&family=Montserrat:wght@100;300;500&display=swap'); </style>
+    </head>
+    <body>
+   
+        <navbar class="navbar">
+
+        <!-- links to all 3 urls within the mySite app via navbar -->
+            <ul>
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li><a href="{% url 'work_experience' %}">Work Experience</a></li>
+              <li><a href="{% url 'projects' %}">Projects</a></li>
+              
+            </ul>
+        </navbar>
+
+
+    <!-- Descricption of work experience -->
+    <section id="work experience">
+        <h2>WORK EXPERIENCE: </h2>
+
+        <h3> Web services/advertising/brand management </h3>
+        <h4>DODI Development Initiative | grassroots charity 2020- present </h4> 
+
+        <p> Build and maintain responsive website for mobile and desktop with Paypal linked call to action donation buttons</p>
+        <ul>
+            <li>Increased brand awareness and charity donations by 52% </li>
+            <li>Designing & writing monthly newsletter with increased open and click rate by 82% </li>
+            <li>Delivering on complex fundraising projects such as building of medical clinic and provision of solar panels</li>
+            <li>Proven ability to write impactful copy to communicate charity purpose through various touch points: social/web/email</li>
+            <li>Public facing communicator to increase brand  engagement</li>
+        </ul>
+       
+
+    </section>
+
+    <!-- Footer at end of each page -->
+    <footer>
+        <img id="logo" src="{% static 'VM Design Logo.png' %}">
+        <a id="footer-email" href="mailto:vaishalimehmi@yahoo.co.uk" class="footer__link">vaishalimehmi@yahoo.co.uk</a>
+
+    </footer>
+</body>
+</html>

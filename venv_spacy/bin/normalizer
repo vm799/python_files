@@ -1,4 +1,4 @@
-#!/Users/rohanmehmi/Desktop/python_first/venv_spacy/bin/python3
+#!/Users/rohanmehmi/Desktop/python_first/venv_spacy/bin/python3.11
 # -*- coding: utf-8 -*-
 import re
 import sys

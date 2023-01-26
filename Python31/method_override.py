@@ -5,8 +5,18 @@
 #user inputs
 name = input("""
             Please type in your name:  """)
-age = int(input("""
-            Please type in your age:  """))
+while True: 
+    age = input("""
+            Please type in your age:  """)
+    if age.isnumeric():
+        age = int(age)
+        print("""
+            Thank you!""")
+        break
+    else:
+        print("""
+            Oops! Is that your age? please try again!""")
+        
 hair_colour = input("""
             Please type in your hair colour:  """)
 eye_colour = input("""
@@ -34,6 +44,9 @@ class Adult:
 # subclass of Adult class with same attributes
 class Child(Adult):
     
+    def __init__(self):
+        self.name = name
+    
     #subclass method to override the Adult method if user too young
     def can_drive(self):
         print(f"""
@@ -46,13 +59,12 @@ class Child(Adult):
 # function to determine age of user and call relevant class or subclass therefore if can drive
 def determine_object_class():
     if age >= 18:
-        person = Adult()
+        person = Adult(name, age, hair_colour, eye_colour)
         person.can_drive()
     
     elif age < 18:
         person = Child()
         person.can_drive()
-      
         
 determine_object_class()
         

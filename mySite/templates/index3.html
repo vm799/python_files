@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>VM Portfolio</title>
+
+        <!-- to link the css file to html -->
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}"/>
+
+        <style> @import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400&family=DM+Sans:ital,wght@0,400;0,500;1,700&family=Lora:wght@400;500&family=Montserrat:wght@100;300;500&display=swap'); </style>
+    </head>
+    <body>
+        
+        <!-- links to all 3 urls within the mySite app via navbar -->
+        <navbar class="navbar">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'work_experience' %}">Work Experience</a></li>
+                <li><a href="{% url 'projects' %}">Projects</a></li>
+              
+            </ul>
+        </navbar>
+
+    <!-- link to my github and some frontend projects I have done -->
+    <section id="projects">
+        <h2>PROJECTS: </h2>
+
+        <a href="https://github.com/vm799?tab=repositories"
+           target="_blank">
+            My Projects on Github
+        </a>
+
+    <!-- link to websites hosted on gh-pages and vercel  -->
+    </section>
+    <article>
+    <a href="https://vm799.github.io/TheOptomTutors/"> 
+        <img id="project-tile" src="{% static 'project1.png' %}" alt="">
+    </a> 
+    <a href="https://vm799.github.io/synetic-ss/">
+        <img id="project-tile" src="{% static 'project2.png' %}">                
+    </a>
+    <a href="https://fitness-website-react-app.vercel.app/">
+        <img id="project-tile" src="{% static 'project3.png' %}">
+    </a>
+    
+    </article>
+
+     <!-- link to logo created on canva with link to email  -->
+     <!-- Footer at end of each page -->
+    <footer>
+        <img id="logo" src="{% static 'VM Design Logo.png' %}">
+        <a id="footer-email" href="mailto:vaishalimehmi@yahoo.co.uk" class="footer__link">vaishalimehmi@yahoo.co.uk</a>
+
+    </footer>
+
+    </body>
+</html>

@@ -1,0 +1,56 @@
+**--COMPULSORY TASK 1--**
+
+
+QUESTION 1:
+The "P in HTTP means protocol.
+Protocol means a set of rules so there is always continuity in carrying out certain procedures
+In the case of HTTP is used to transfer files and allow users to communicate 
+with data across the world via the world wide web
+
+
+Question 2:
+HTTP is built on top of the TCP/IP - Transmission Control Protocol/Internet Protocol 
+TCP/IP protocol forms the foundation of the web
+
+Question 3:
+If a request is successful the response code is 200 OK  
+Success codes: 200-299
+
+Question 4:
+A stateless protocol is a communication set of rules/protocol in which the user that receives 
+the data must not remember or keep the previous session state.
+The communication must be dealt with as an independant event and in no way related 
+to the previous event or any similar event.
+Protocols like IP or Internet Protocol are stateless and don't keep track of information for
+multiple communications.
+Every HTTP request is stateless, independant and detached from the request before it.
+
+
+Question 5:
+Valid MME types are
+
+    a. text/time: NO
+
+    b. image/jpeg: YES (ref:https://www.rfc-editor.org/rfc/rfc2045.html)
+
+    c. text/javascript: yes  (ref: https://www.iana.org/assignments/media-types/text/javascript)
+
+    d. text/jsx:  NO
+
+    e. image/psd: NO
+
+    f. text/calender: YES  (ref:https://www.iana.org/assignments/media-types/text/calendar)
+
+Question6:
+The status message expected if server does not allow permission to request a 
+specific resource is:   403 Forbidden
+
+
+
+#https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages
+#https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+#https://www.iana.org/assignments/media-types/media-types.xhtml
+#https://www.techtarget.com/whatis/definition/HTTP-Hypertext-Transfer-Protocol
+#https://en.wikipedia.org/wiki/Stateless_protocol
+#https://www.youtube.com/watch?v=E5bSumTAHZE
+#https://www.techopedia.com/definition/697/stateless-protocol

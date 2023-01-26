@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>VM Portfolio</title>
+        
+        <!-- to link the css file to html -->
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}"/>
+
+        <style> @import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400&family=DM+Sans:ital,wght@0,400;0,500;1,700&family=Lora:wght@400;500&family=Montserrat:wght@100;300;500&display=swap'); </style>
+    </head>
+    <body>
+
+        <!-- links to all 3 urls within the mySite django app via navbar -->
+        <navbar class="navbar">
+            <ul>
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li><a href="{% url 'work_experience' %}">Work Experience</a></li>
+              <li><a href="{% url 'projects' %}">Projects</a></li>
+              
+            </ul>
+        </navbar>
+        <hr>
+
+    <!-- An image of myself -->
+    <img src="{% static 'me_codes.png' %}"
+        width="100" 
+        height="100" 
+        alt="an image of vaishali smiling"/>
+
+    <!-- Introduction and welcome to the page -->
+        <h1>Hello there</h1>
+        <h2>My name is Vaishali Mehmi.</h2>
+
+        <aside id="welcome">
+        <h3> I love problem solving with python and creating magic with HTML, CSS and Javascript... I also adore cocker spaniels.
+        </h3>
+        </aside>
+
+<!-- short bio on myself -->
+    <section id="bio">
+        <h2>ABOUT ME:</h2>
+        <p> I am a junior software developer, UX research and human-centred experience designer. I am a natural problem solver and am able to use my UX skills and front and backend development ability to create happy solutions.</p>
+
+        <p> I love building and designing. Enhancing existing projects and creating new. I have a keen eye for fine detail & simple design. </p>
+            
+        <p>  Studying the user's journey fills me with fascination and a passion to create more enjoyable and productive user experiences. </p> 
+        </p>
+        <p>I have worked for a charity, building and maintaining their wordpress site and designing and writing their emails.
+        I have also designed and built frontend websites for my friends.
+        </p>
+
+        <p> I am motivated to create positive change with the work I do and I feel I can make a greater impact as a full stack engineer.
+        </p>
+    </section>
+
+    <!-- My contact details  -->
+    <section id="contact">
+  
+        <h2>
+            CONTACT ME:
+        </h2>
+        <p id="contact-intro">Please feel free to reach out for more information:
+        </p>
+
+        <section id="contact-details">
+        <h2>   Vaishali Mehmi </h2> 
+       
+        <h4>Mobile no: <span>  07950 339 567 </span> </h4>
+     
+        <!-- link to email -->
+        <h4>Email address: 
+            <span>
+                <a href="mailto:vaishalimehmi@yahoo.co.uk"></a> 
+            </span> 
+        </h4>
+        <h4>LinkedIn:  <a href ="https://www.linkedin.com/in/vaishali7/">Connect with me</a></h4>
+        </section>   
+        
+ 
+    </section>
+
+    <!-- List of skills and competencies -->
+    <section id="skills">
+       
+        <h2>KEY SKILLS:</h2>
+
+        <ul>
+
+        <li>  Python</li>
+        <li>  Javascript & React, CSS/SASS, Figma</li>
+        <li>  Problem solving with simple solutions</li>
+        <li>  Frontend design and UX research & design</li>
+        <li>  Team collaboration</li>
+        <li>  Solidity & building on blockchain </li>
+        <li>  Public speaking & Event organisation</li>
+
+        </ul>
+
+    </section>
+
+    <!--Description of education  -->
+    <section id="education">
+        <h2>EDUCATION: </h2>
+
+        <h3>SOFTWARE DEVELOPER 2022-2023</h3>
+        <h4> HyperionDev Bootcamp on completion: </h4>
+
+        <ul>
+
+        <li>Python</li>
+        <li>SQL</li>
+        <li>Object-orientated programming</li>
+        <li>Systems analysis & design</li>
+        <li>Use data science libraries</li>
+        <li>Management of software life cycle</li>
+
+        </ul>
+
+    </section>
+  
+    <!-- Descricption of work experience -->
+    <section id="work experience">
+        <h2>WORK EXPERIENCE: </h2>
+
+        <h3> Web services/advertising/brand management </h3>
+        <h4>DODI Development Initiative | grassroots charity 2020- present </h4> 
+
+        <p> Build and maintain responsive website for mobile and desktop with Paypal linked call to action donation buttons</p>
+        <ul>
+            <li>Increased brand awareness and charity donations by 52% </li>
+            <li>Designing & writing monthly newsletter with increased open and click rate by 82% </li>
+            <li>Delivering on complex fundraising projects such as building of medical clinic and provision of solar panels</li>
+            <li>Proven ability to write impactful copy to communicate charity purpose through various touch points: social/web/email</li>
+            <li>Public facing communicator to increase brand  engagement</li>
+        </ul>
+       
+
+    </section>
+    
+    <!-- link to my github and some frontend projects I have done -->
+    <section id="projects">
+        <h2>PROJECTS: </h2>
+
+        <a href="https://github.com/vm799?tab=repositories"
+           target="_blank">
+            My Projects on Github
+        </a>
+
+    <!-- link to websites hosted on gh-pages and vercel  -->
+    </section>
+    <article id="project-tiles">
+        
+
+        <a href="https://vm799.github.io/TheOptomTutors/"> 
+            <img id="project-tile" src="{% static 'project1.png' %}" alt="">
+        </a> 
+        <a href="https://vm799.github.io/synetic-ss/">
+            <img id="project-tile" src="{% static 'project2.png' %}">                
+        </a>
+        <a href="https://fitness-website-react-app.vercel.app/">
+            <img id="project-tile" src="{% static 'project3.png' %}">
+        </a>
+        
+        </article>
+
+         <!-- link to logo created on canva with link to email  -->
+        <footer>
+            <img id="logo" src="{% static 'VM Design Logo.png' %}">
+            <a id="footer-email" href="mailto:vaishalimehmi@yahoo.co.uk" class="footer__link">vaishalimehmi@yahoo.co.uk</a>
+
+        </footer>
+
+    </body>
+</html>
+
+<!-- https://www.studytonight.com/cascading-style-sheet/css-navigation-bar-style -->
+<!-- https://stackoverflow.com/questions/3402708/django-urls-straight-to-html-template -->
+<!-- https://forum.djangoproject.com/t/using-multiple-views-in-one-page/11411 -->
+<!-- https://docs.djangoproject.com/en/4.1/howto/static-files/ -->
+<!-- https://stackoverflow.com/questions/5738222/linking-an-image-in-django -->
+<!-- https://www.w3schools.com/django/django_add_css_file.php -->
+<!-- https://www.csestack.org/add-css-static-files-django/#:~:text=%E2%94%80%E2%94%80registration-,Including%20CSS%20in%20Django%20Template,HTML)%20file.&text=Then%2C%20insert%20the%20stylesheet%20in%20the%20HTML%20using%20link%20HTML%20tag.&text=If%20you%20are%20new%20to,adding%20CSS%20in%20HTML%20code. -->
+<!-- https://www.learningrobo.com/2021/09/responsive-about-us-page-using-html-css_01649346544.html -->
+<!-- https://www.w3schools.com/howto/howto_css_about_page.asp -->
+<!-- https://www.geeksforgeeks.org/design-an-about-us-page-using-html-and-css/ -->
