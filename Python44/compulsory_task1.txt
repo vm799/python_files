@@ -1,0 +1,60 @@
+Q1.
+a) DATA - Data cn take many forms such as numbers, words, 
+descriptions/observations or measurements and qauntities
+a group of values that convey meaning
+
+b) FIELD - A collection of characters or character that all has a specific 
+meaning or definition used for the staring and defining of data.
+
+c) RECORD - A interconnected number of fields that can ascribe meaning 
+or describe a place, person or thing
+
+d) FILE -  A larger group of records and are related in some way
+
+Q2.DBMS - Database Management System
+A group or collection of programs
+- manages the structural aspect of the database 
+- control access to the data within
+
+Advantages : The System is a go-between the user and data held within the System
+, this allows a greater efficiency in the management of data and efficacy in it's handling.
+DBMS allows more efficent sharing of more effectively and efficiently managed 
+data 
+DBMS allows control of access to the data allowing better access to those that need to use it and 
+away and not openly accessible  from those that should not have access
+DBMS allows data to be integrated and give a better operational overview and 
+management of a user/organisation operations
+DBMS allows for consistency of data and prevention of repetition of the same data in varius different sources
+Hence reduction of inconsistencies.
+DBMS allows better access to data through data manipulation
+DBMS facilitates generation of better quality information and access to data
+which in turn allows better decisions to made at a management level
+DBMS allows the transformation of data into usable and user friendly information
+to help the user/organisation to get the answers they need to make better decisions
+
+
+Q3. DIFFERENCES BETWEEN DATA AND INFORMAITON:
+Data is raw and unorganised without context and can be unrelated, the raw bits of the bigger picture
+Information is organised contextual data that has been structured or presented 
+in a certain way to give context and be of use 
+Information is the drawing together of data through management and processing to give 
+useful meaningful insights
+
+Q4. METADTA:
+A set of data that gives information and describes other data
+Provides information about other data
+3 types: descriptive, administrative and structural
+
+(oxford dictionary)
+
+Q5.
+
+e) This file contains 4 records
+
+f) This record contains  5  fields
+
+https://www.techtarget.com/searchdatamanagement/definition/data
+https://www.mathsisfun.com/data/data.html
+https://en.wikipedia.org/wiki/Data
+https://www.diffen.com/difference/Data_vs_Information
+https://www.google.com/search?sxsrf=AJOqlzWQ6wYVjzgAUgTisGTqaqTwNGqh4g:1674821980372&q=what+is+metadata+example&spell=1&sa=X&ved=2ahUKEwiXz86J3uf8AhVuSEEAHX5vA9gQirwEKAB6BAgIEAE&biw=581&bih=694&dpr=1
