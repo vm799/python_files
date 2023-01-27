@@ -23,13 +23,26 @@ gardenpathSentences = [
     "He came and painted the wall with cracks all over"
     ]
 
-# tokenise each sentence and perfom entity recognition
+
+# tokenise each sentence
+
 for sample_sentence in gardenpathSentences:
-    print(sample_sentence)
     doc = nlp(sample_sentence)
 
     print([token.orth_ for token in doc if not token.is_punct | token.is_space])
     print([(w.text, w.pos_) for w in doc])
+    
+
+# perfom entity recognition
+chatgpt_context = """
+ChatGPT, an artificial intelligence text generator, is being hailed as the future of work, 
+but not everyone is convinced. ChatGPT is an AI tool that can generate human-like text. 
+Technologists see this as a disruptor of many jobs. 
+Engineers and artists are pushing back against generative AI."""
+
+nlp_chatgpt = nlp(chatgpt_context)
+print([(i, i.label_, i.label) for i in nlp_chatgpt.ents])
+
 
 #----------------------FIRST OUTPUT-----------------------------#
 """
@@ -75,6 +88,16 @@ He came and painted the wall with cracks all over
 [('He', 'PRON'), ('came', 'VERB'), ('and', 'CCONJ'), ('painted', 'VERB'), ('the', 'DET'), ('wall', 'NOUN'), ('with', 'ADP'), ('cracks', 'NOUN'), ('all', 'ADV'), ('over', 'ADV')]
 """
 
+#perform entity recognition
+#----------------------THIRD OUTPUT-----------------------------#
+"""
+[(AI, 'GPE', 384), (Technologists, 'NORP', 381), (Engineers, 'ORG', 383), (AI, 'ORG', 383)]
+This has classified named items'entities in the short chatGPT text and 
+put them into pre-determined categories
+
+"""
+
+
 #how spaCy has categorised each sentence
 """
 spaCy has categorised each word in the sentence into various groups.
@@ -97,6 +120,14 @@ print(f"CCONJ:{entity_cconj}")
 
 entity_adp = spacy.explain("ADP")
 print(f"ADP:{entity_adp}")
+
+entity_norp = spacy.explain("NORP")
+print(f"NORP:{entity_norp}")
+
+entity_gpe = spacy.explain("GPE")
+print(f"GPE:{entity_gpe}")
+
+
 
 #2 examples of entities looked up for clarity
 """
@@ -123,3 +154,4 @@ DID ENTITIY MAKE SENSE: Yes this did. So the aux is the action past, present or 
 #https://en.wikipedia.org/wiki/Garden-path_sentence
 #https://www.byrdseed.com/garden-path-sentences/
 #https://www.apartmenttherapy.com/garden-sentences-262915
+# https://www.context.news/ai/what-is-chatgpt-and-will-it-steal-our-jobs

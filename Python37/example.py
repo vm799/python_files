@@ -132,6 +132,7 @@ of India honoured her with the Padma Shri, and Time named her one of the 100 mos
 
 # Get labels and entities and print them
 nlp_priyanka = nlp(wiki_priyanka)
+
 print([(i, i.label_, i.label) for i in nlp_priyanka.ents])
 
 '''Output:
