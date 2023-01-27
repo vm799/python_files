@@ -50,10 +50,15 @@ print(max(closely_matched_movies))
 for i in closely_matched_movies:
     if i == max(closely_matched_movies):
         print(f"""
-              
-        Here is your most similar movie matched from your list of movies, 
-        to watch next: {token}
+
+#------------------------------------------------------------#
+Here is your most similar movie matched from your list of movies.
+         
+Watch next: 
         
+        {token}
+#------------------------------------------------------------#
+
         """)
             
             
