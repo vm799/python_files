@@ -1,5 +1,4 @@
 import sqlite3
-from pprint import pprint
 
 db = sqlite3.connect('Python47/student_db')
 cursor = db.cursor()  # Get a cursor object
@@ -47,11 +46,6 @@ id = 55
 cursor.execute('''UPDATE python_programming SET grade = ? WHERE id < ? ''',(100 , 55))
 
 db.commit()
-
-# select all records with a grade between 60 and 80 inclusive and print them
-cursor.execute('''SELECT * FROM python_programming''')
-student_rows = cursor.fetchall()
-print(student_rows)
 
 db.close()
 print('Connection to database closed')
