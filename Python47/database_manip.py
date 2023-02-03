@@ -18,37 +18,76 @@ rows = [(55, 'Carl Davis', 61),
         (77, 'Jane Richards', 78),
         (12, 'Peyton Sawyer', 45),
         (2, 'Lucas Brooke', 99 ) ]
-
-
+db.commit()
 
 # Insert rows of the students data into the table
 cursor.executemany('''INSERT OR REPLACE INTO python_programming(id, name, grade)
                   VALUES(?,?,?)''', rows)
-print(f' {len(rows)} users inserted')
+cursor.execute('''SELECT * FROM python_programming''')
+student_rows = cursor.fetchall()
+print(f"""
+*---------New table created with following user rows:
+      
+{student_rows}
+      """)
 
+print(f' {len(rows)} users inserted')
 db.commit()
 
 # select all records with a grade between 60 and 80 inclusive and print them
 cursor.execute('''SELECT * FROM python_programming WHERE grade > 59 AND grade < 81''')
 student_rows = cursor.fetchall()
-print(student_rows)
-
+print(f"""
+*---------Student rows for those who have grades between 60 and 80 inclusively: 
+      
+{student_rows}
+      """)
+db.commit()
 
 # Change Carl Davis's grade to 65
 id = 55
 cursor.execute('''UPDATE python_programming SET grade = ? WHERE id= ? ''',(65, id))
+db.commit()
+cursor.execute('''SELECT * FROM python_programming''')
+student_rows = cursor.fetchall()
+print(f"""
+*---------Student rows with new grade for Carl Davis,
+          upgrading from 61 to 65
+      
+{student_rows}
+      """)
 
 # Delete Dennis Fredrickson's row
 cursor.execute('''DELETE from python_programming WHERE name = "Dennis Fredrickson" ''')
+student_rows = cursor.fetchall()
+db.commit()
+cursor.execute('''SELECT * FROM python_programming''')
+student_rows = cursor.fetchall()
+print(f"""
+*---------Student rows with Dennis deleted
+      
+{student_rows}
+      """)
 
 # Change the grade of all people with id BELOW 55
 id = 55
 cursor.execute('''UPDATE python_programming SET grade = ? WHERE id < ? ''',(100 , 55))
-
 db.commit()
+cursor.execute('''SELECT * FROM python_programming''')
+student_rows = cursor.fetchall()
+print(f"""
+*---------Student rows updated, those with id less than 55 updated with grades of 100:
+      
+{student_rows}
+      """)
 
 db.close()
-print('Connection to database closed')
+print('''
+      
+*============Connection to database closed=============*
+      
+      
+      ''')
 
 
 # https://stackoverflow.com/questions/11853167/parameter-unsupported-when-inserting-int
