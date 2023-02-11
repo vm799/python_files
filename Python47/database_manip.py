@@ -20,6 +20,7 @@ rows = [(55, 'Carl Davis', 61),
         (2, 'Lucas Brooke', 99 ) ]
 db.commit()
 
+
 # Insert rows of the students data into the table
 cursor.executemany('''INSERT OR REPLACE INTO python_programming(id, name, grade)
                   VALUES(?,?,?)''', rows)
@@ -58,7 +59,7 @@ print(f"""
       """)
 
 # Delete Dennis Fredrickson's row
-cursor.execute('''DELETE from python_programming WHERE name = "Dennis Fredrickson" ''')
+cursor.execute('''DELETE from books WHERE name = "Dennis Fredrickson" ''')
 student_rows = cursor.fetchall()
 db.commit()
 cursor.execute('''SELECT * FROM python_programming''')
