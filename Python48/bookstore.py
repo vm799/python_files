@@ -1,7 +1,9 @@
-# create a program to be used by a bookstore clerk
+# create a program to be used by a bookstore clerk with a variety of functions to 
+# manipulate and review stock
+
 import sqlite3
 
-db = sqlite3.connect('Python48/books_db')
+db = sqlite3.connect('books_db')
 cursor = db.cursor()  # Get a cursor object
 
 #===============DATABASE================#
@@ -16,7 +18,7 @@ db.commit()
 rows = [(3001, 'A Tale of Two Cities ', 'Charles Dickens', 30),
         (3002, 'Harry Potter and the Philospher\'s Stone', 'J.K Rowling', 40),
         (3003, 'The Lion, The Witch and the Wardrobe', 'C.S.Lewis', 25),
-        (3004, 'The Lord of the Rings', 'J.R.R. Tolkein', 37),
+        (3004, 'The Lord of the Rings', 'J.R.R. Tolkien', 37),
         (3005, 'Alice in Wonderland', 'Lewis Carroll', 12) 
         ]
 
@@ -32,9 +34,11 @@ print(f"""
       """)
 db.commit()
 
+#find all books in the bookshelf database
 cursor.execute('''SELECT * FROM books''')
 book_rows = cursor.fetchall()
 
+#loop through all the books found and print relevant data
 for i in book_rows:
         print(f""" 
     Title: {i[1]}  
@@ -50,14 +54,16 @@ for i in book_rows:
 
 
 #===============FUNCTIONS================#
+
 def add_book():
-    
+    '''Allows user to input a new book with relevant data'''
     while True:
         id = input("""
                    
         -*-* Please type in the ID of the book you would like to add:  
         (numbers only please)__ """)
         
+        #defensive prorgramming to ensure id consists of numbers
         if id.isnumeric():
             print(f"""
         Thank you, ID is {id}
@@ -68,7 +74,8 @@ def add_book():
             print("""
         Sorry, try again! Just numbers please.
         """)
-        
+    
+    #while loop to ensure the user can keep trying if initial attempt fails    
     while True:
         quantity = input("""
         -*-*Please type in the quantity of this book you would like to add:  
@@ -85,6 +92,7 @@ def add_book():
         Sorry, try again! Just numbers please.
         """)   
     
+    #user inputs for new book
     title = input("""
         -*-*Please type in the title of the book you would like to add:  """)
     
@@ -97,6 +105,7 @@ def add_book():
                   VALUES(?,?,?,?)''', (id, title, author, quantity))
     db.commit()
     
+    #New updated bookshelf database printed out to confirm book entry
     print(f"""
           
         #--- New book added to the database: {quantity} books of {title} by {author} ---#""")
@@ -111,22 +120,25 @@ def add_book():
     """)
 
     
-
 def update_book():
+    '''Allows user to find book with ID and update stock levels '''
     while True:
         id = input("""
         -*-*Please type in the ID of the book you would like to update:  (numbers only please)
         type exit to go back to main menu___:  """)
         
+        #defensive checking for numerical ID
         if id.isnumeric():
             print(f"""
-        Thank you, ID is {id}
+        Thank you, ID is {id}, searching now...
         """)
 
         if cursor.execute('''SELECT title, author FROM books WHERE id =?''', ([id])).fetchone():                  
             print(f"""
-        *---------Thank you ID found----------*
+        *---------Thank you your book ID found----------*
         """)
+            
+            #if ID is matched with a book in database then user is able to access option to change quantity
             while True:
                 new_quantity = input("""
         -*-*Please type in the new quantity of this book:  (numbers only please):  """)  
@@ -138,6 +150,7 @@ def update_book():
                     cursor.execute('''UPDATE books SET quantity = ? WHERE id= ? ''',(new_quantity, id))
                     db.commit()
 
+                    #new updated bookshelf printed with updated stock levels
                     cursor.execute('''SELECT * FROM books''')
                     book_rows = cursor.fetchall()
 
@@ -146,15 +159,15 @@ def update_book():
         Title: {i[1]}  
         by Author: {i[2]}  
         Stock levels: {i[3]}""")
-    
-        
                     break     
+                    
                         
                 else:
                     print("""
         Sorry, try again! Just numbers please.
         """)
-                    
+        
+        #if user enters any letters in "exit" string then break out of loop to main menu         
         elif id in "exit":
             print("""
                   
@@ -176,18 +189,21 @@ def update_book():
   
   
 def delete_book():
+    ''' Allows user to delete books from bookshelf database by searching for book with ID'''
+    
     while True:
         
         id = input("""
         -*-*Please type in the ID of the book you would like to delete:  (numbers only please)
         type exit to go back to main menu___:  """)
         
+        #defensive check if the ID input is numerical
         if id.isnumeric():
             print(f"""
         Thank you, ID is {id}
         """)
-                
-                
+        
+        #if ID is found in database then book will be deleted       
         if cursor.execute('''SELECT title, author FROM books WHERE id =?''', ([id])).fetchone():                  
             print(f"""
         *---------Thank you ID found----------*""")
@@ -197,6 +213,8 @@ def delete_book():
             
             cursor.execute('''SELECT * FROM books''')
             book_rows = cursor.fetchall()
+            
+            #new bookshelf database printed to confirm to user book has been deleted
             print(f"""
         *---Your book is now deleted
         *---Your updated bookshelf database:
@@ -209,6 +227,8 @@ def delete_book():
             break
         
         else:
+            # if user enters incorrect ID the bookshelf is shown to remind user of the ID numbers in
+            # existing database
             cursor.execute('''SELECT * FROM books''')
             book_rows = cursor.fetchall()
             print(f"""
@@ -216,13 +236,12 @@ def delete_book():
         *** Sorry that ID doesn't exist- please try another from these: ***""")
             for i in book_rows:
                 print(f""" 
-        ID: {i[0]}  
+        ID:    {i[0]}  
         TITLE: {i[1]}  """)
                 
             
-            
-
 def search_book():
+    '''Allows user to search for a book and receive an output of that book's data'''
     while True:
         id = input("""
         -*-*Please type in the ID of the book you would like to look for:  
@@ -230,27 +249,29 @@ def search_book():
         
         if id.isnumeric():
             print(f"""
-        Thank you, ID is {id}""")
+        Thank you, ID is {id}, searching for your book now...""")
         
+        #if ID found the required book data to be printed
         if cursor.execute('''SELECT title, author FROM books WHERE id =?''', ([id])).fetchone():                  
             print(f"""
-        *---------Thank you ID found----------*""")   
+        *--ID found! --*""")   
             cursor.execute('''SELECT * FROM books WHERE id =?''', ([id]))
             book_update = cursor.fetchone()
             
             print(f"""
                   
-        *--*Here is your book*--*
+        *-------*Here is your book*-------*
         
         ID:               {book_update[0]}
         TITLE:            {book_update[1]}
         AUTHOR:           {book_update[2]}
         STOCK LEVELS:     {book_update[3]}
-        
+        *--*---------------------------*--*
         """)
             db.commit()
             break
         
+        #if ID not in database the bookshelf printed to remind user of existing IDs
         else:
             cursor.execute('''SELECT * FROM books''')
             book_shelf = cursor.fetchall()
@@ -260,6 +281,7 @@ def search_book():
 
         """)
             
+            #reminder of the current bookshelf database
             for i in book_shelf:
                 print(f""" 
         ID:    {i[0]}  
@@ -267,7 +289,7 @@ def search_book():
         
 
 # menu for bookstore clerk
-#while loop to allow the loop to run and present the same menu after each option is completed
+# while loop to allow the loop to run and present the same menu after each option is completed
 
 while True:  
 
@@ -284,9 +306,8 @@ while True:
                 5. Exit
     *________________________________________________________________________*
     
-    :__ ''').lower() 
+    :__ ''')
         
-
     if menu == '1':
         add_book()
     elif menu == '2':
@@ -302,5 +323,3 @@ while True:
     
         Please try again, that was not a valid option
         ''')
-                
-                
