@@ -1,7 +1,7 @@
 import PySimpleGUI as sg
 
 layout = [[sg.Text("Hey hey beautiful!")], [sg.Button("Exit here")]]
-window = sg.Window(title="Booykashaa", layout=[[]], margins=(100,50))
+window = sg.Window("demo", layout)
 
 while True:
     event, values = window.read()
