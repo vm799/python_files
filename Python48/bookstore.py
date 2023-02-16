@@ -16,7 +16,7 @@ db.commit()
 
 #add indiviudal student data to the variable rows to add in table
 rows = [(3001, 'A Tale of Two Cities ', 'Charles Dickens', 30),
-        (3002, 'Harry Potter and the Philospher\'s Stone', 'J.K Rowling', 40),
+        (3002, 'Harry Potter and the Philosopher\'s Stone', 'J.K Rowling', 40),
         (3003, 'The Lion, The Witch and the Wardrobe', 'C.S.Lewis', 25),
         (3004, 'The Lord of the Rings', 'J.R.R. Tolkien', 37),
         (3005, 'Alice in Wonderland', 'Lewis Carroll', 12) 
@@ -323,3 +323,12 @@ while True:
     
         Please try again, that was not a valid option
         ''')
+
+
+
+# ================================References==========================================*
+#https://www.programiz.com/python-programming/docstrings
+#https://stackoverflow.com/questions/16856647/sqlite3-programmingerror-incorrect-number-of-bindings-supplied-the-current-sta
+#https://sqlitebrowser.org/
+#https://stackoverflow.com/questions/19337029/insert-if-not-exists-statement-in-sqlite
+#https://stackoverflow.com/questions/18817699/python-check-if-exists-in-sqlite3
